@@ -10,8 +10,12 @@ ClassA.prototype.print =  function(){
 console.log(objA.name);
 objA.print();
 
+//output
+//class A
+//i am in class A
 
 
+//this is magic to create inheritance code where we are using object class to clone parent prototype into childs one;
 var inharitedFrom =  function(child, parent){
     child.prototype = Object.create(parent.prototype);
 }
@@ -24,18 +28,19 @@ var ClassB =  function()
 }
 
 inharitedFrom(ClassB, ClassA);
-
 var objB = new ClassB();
+
 console.log(objB.name + " " + objB.surname);
 objB.print();
 
+//output
+//ajay kotnala
+//i am in class A
 
 
 var ClassC = function(){
     this.NickName = "Pawan";
 }
-
-
 
 inharitedFrom(ClassC, ClassB);
 
@@ -43,6 +48,9 @@ var objC =  new ClassC();
 console.log(objB.name+ " " + objB.surname + " nickname is "+ objC.NickName);
 objC.print();
 
+//output
+//ajay kotnala nickname is Pawan
+//i am in class A
 
 
 // with node6 + version and es6 standard
@@ -56,6 +64,8 @@ class parent {
 var obj =  new parent();
 obj.parentMethod();
 
+//output = i am in parent class with ES6 standards
+
 class childclass extends parent{
     childMethod(){
         console.log("i am in child class with ES6 version");
@@ -65,3 +75,7 @@ class childclass extends parent{
 var childobj =  new childclass();
 childobj.childMethod();
 childobj.parentMethod();
+
+//output is 
+//i am in child class with ES6 version
+//i am in parent class with ES6 standards
