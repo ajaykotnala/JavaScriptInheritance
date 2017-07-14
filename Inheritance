@@ -1,0 +1,67 @@
+var ClassA = function() {
+    this.name = "class A";
+}
+
+var objA= new ClassA();
+ClassA.prototype.print =  function(){
+    console.log("i am in class A");
+}
+
+console.log(objA.name);
+objA.print();
+
+
+
+var inharitedFrom =  function(child, parent){
+    child.prototype = Object.create(parent.prototype);
+}
+
+
+var ClassB =  function()
+{
+    this.name = "ajay";
+    this.surname = "kotnala";
+}
+
+inharitedFrom(ClassB, ClassA);
+
+var objB = new ClassB();
+console.log(objB.name + " " + objB.surname);
+objB.print();
+
+
+
+var ClassC = function(){
+    this.NickName = "Pawan";
+}
+
+
+
+inharitedFrom(ClassC, ClassB);
+
+var objC =  new ClassC();
+console.log(objB.name+ " " + objB.surname + " nickname is "+ objC.NickName);
+objC.print();
+
+
+
+// with node6 + version and es6 standard
+class parent {
+    
+     parentMethod(){
+        console.log("i am in parent class with ES6 standards");
+    }
+}
+
+var obj =  new parent();
+obj.parentMethod();
+
+class childclass extends parent{
+    childMethod(){
+        console.log("i am in child class with ES6 version");
+    }
+}
+
+var childobj =  new childclass();
+childobj.childMethod();
+childobj.parentMethod();
